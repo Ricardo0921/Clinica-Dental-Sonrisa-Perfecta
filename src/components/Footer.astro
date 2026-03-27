@@ -1,0 +1,251 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">
+        <span>🦷</span> Sonrisa Perfecta
+      </a>
+      <p>Tu clínica dental de confianza en San José, Costa Rica. Más de 15 años cuidando tu salud bucal con calidez y tecnología de punta.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="WhatsApp" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.563 5.412L2 22l4.703-1.533A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contacto -->
+    <div class="footer-col">
+      <h3>Contacto</h3>
+      <ul>
+        <li>
+          <span class="icon">📍</span>
+          <span>Barrio Escalante, Calle 33, San José, Costa Rica</span>
+        </li>
+        <li>
+          <span class="icon">📞</span>
+          <a href="tel:+50622345678">+506 2234-5678</a>
+        </li>
+        <li>
+          <span class="icon">📱</span>
+          <a href="https://wa.me/50688887777" rel="noopener noreferrer">+506 8888-7777 (WhatsApp)</a>
+        </li>
+        <li>
+          <span class="icon">✉️</span>
+          <a href="mailto:info@sonrisaperfecta.cr">info@sonrisaperfecta.cr</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Horario -->
+    <div class="footer-col">
+      <h3>Horario de atención</h3>
+      <ul class="schedule">
+        <li><span>Lunes – Viernes</span><span>8:00 am – 6:00 pm</span></li>
+        <li><span>Sábados</span><span>8:00 am – 12:00 pm</span></li>
+        <li class="closed"><span>Domingos y feriados</span><span>Cerrado</span></li>
+      </ul>
+    </div>
+
+    <!-- Servicios -->
+    <div class="footer-col">
+      <h3>Servicios</h3>
+      <ul class="services-list">
+        <li><a href="/#servicios">Limpieza dental</a></li>
+        <li><a href="/#servicios">Ortodoncia y brackets</a></li>
+        <li><a href="/#servicios">Implantes dentales</a></li>
+        <li><a href="/#servicios">Blanqueamiento</a></li>
+        <li><a href="/#servicios">Carillas de porcelana</a></li>
+        <li><a href="/#servicios">Tratamiento de conductos</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>© {year} Clínica Dental Sonrisa Perfecta. Todos los derechos reservados.</p>
+      <p>Diseñado con ❤️ en Costa Rica</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #0f2347;
+    color: #c8d8ee;
+    margin-top: 4rem;
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    padding: 3.5rem 1.25rem 2.5rem;
+  }
+
+  /* Brand */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .footer-brand p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: #a0b4ce;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(74,144,217,0.15);
+    color: #4A90D9;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .social-links a:hover {
+    background: #4A90D9;
+    color: #fff;
+  }
+
+  /* Cols */
+  .footer-col h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-col ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #a0b4ce;
+  }
+
+  .icon {
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .footer-col a {
+    color: #a0b4ce;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-col a:hover {
+    color: #4A90D9;
+  }
+
+  /* Schedule */
+  .schedule li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .schedule li:last-child {
+    border-bottom: none;
+  }
+
+  .schedule li.closed {
+    opacity: 0.5;
+  }
+
+  /* Services list */
+  .services-list a {
+    display: block;
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.25rem;
+    font-size: 0.8rem;
+    color: #637d96;
+    gap: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding: 2.5rem 1.25rem 2rem;
+    }
+
+    .footer-bottom-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.3rem;
+    }
+  }
+</style>

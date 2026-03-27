@@ -1,0 +1,220 @@
+---
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#contacto', label: 'Contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Sonrisa Perfecta - Inicio">
+      <span class="logo-icon">🦷</span>
+      <span class="logo-text">Sonrisa Perfecta</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Navegación principal">
+      <ul>
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class={currentPath === link.href ? 'active' : ''}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a href="tel:+50622345678" class="btn btn-primary nav-cta">📞 Llámanos</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('mainNav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(27,58,107,0.10);
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 1rem;
+  }
+
+  /* LOGO */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1B3A6B;
+    letter-spacing: -0.02em;
+  }
+
+  /* NAV */
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav ul a {
+    text-decoration: none;
+    color: #374151;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .main-nav ul a:hover,
+  .main-nav ul a.active {
+    color: #1B3A6B;
+    background: #eef3fb;
+  }
+
+  .nav-cta {
+    margin-left: 0.75rem;
+  }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: #1B3A6B;
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: #4A90D9;
+  }
+
+  /* HAMBURGER */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #1B3A6B;
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .main-nav {
+      display: none;
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(27,58,107,0.12);
+      padding: 1rem 1.25rem 1.5rem;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .main-nav.open {
+      display: flex;
+    }
+
+    .main-nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .main-nav ul a {
+      display: block;
+      padding: 0.65rem 0.75rem;
+      font-size: 1rem;
+    }
+
+    .nav-cta {
+      margin-left: 0;
+      margin-top: 0.75rem;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .main-nav {
+      display: flex !important;
+      align-items: center;
+    }
+  }
+</style>

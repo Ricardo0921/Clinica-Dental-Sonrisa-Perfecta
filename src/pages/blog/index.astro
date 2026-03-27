@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('es-CR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout
+  title="Blog | Consejos de Salud Bucal — Sonrisa Perfecta"
+  description="Artículos y consejos de nuestros especialistas sobre cuidado dental, ortodoncia, implantes y más. Mantén tu sonrisa sana con el conocimiento de Sonrisa Perfecta."
+>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <span class="badge">Blog</span>
+      <h1>Consejos para tu salud bucal</h1>
+      <p>Artículos escritos por nuestros especialistas para que tomes las mejores decisiones sobre tu sonrisa.</p>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section class="section blog-section">
+    <div class="container">
+      <div class="posts-grid">
+        {posts.map((post) => (
+          <article class="post-card">
+            <a href={`/blog/${post.slug}`} class="post-image-link" aria-label={`Leer: ${post.data.title}`}>
+              <div class="post-image-placeholder" aria-hidden="true">
+                <span class="post-image-icon">
+                  {post.slug.includes('esmalte') ? '🦷' :
+                   post.slug.includes('bracket') ? '😬' : '🔬'}
+                </span>
+              </div>
+            </a>
+
+            <div class="post-body">
+              <div class="post-meta">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {formatDate(post.data.pubDate)}
+                </time>
+                <span class="post-author">Por {post.data.author}</span>
+              </div>
+
+              <h2 class="post-title">
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h2>
+
+              <p class="post-excerpt">{post.data.description}</p>
+
+              <a href={`/blog/${post.slug}`} class="post-readmore">
+                Leer artículo completo →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>¿Tienes dudas sobre tu salud bucal?</h2>
+        <p>Nuestros especialistas están listos para atenderte. Agenda una consulta gratuita hoy.</p>
+        <a href="tel:+50622345678" class="btn btn-accent btn-lg">📞 Llamar ahora: +506 2234-5678</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* PAGE HERO */
+  .page-hero {
+    background: linear-gradient(135deg, #0f2347, #1B3A6B);
+    color: #fff;
+    padding: 5rem 0 4rem;
+    text-align: center;
+  }
+
+  .page-hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: #fff;
+    max-width: 600px;
+    line-height: 1.15;
+  }
+
+  .page-hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,.75);
+    max-width: 500px;
+  }
+
+  /* BLOG */
+  .blog-section { padding-bottom: 2rem; }
+
+  .posts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .post-card {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 2.5rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+  }
+
+  .post-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+
+  .post-image-link { display: block; }
+
+  .post-image-placeholder {
+    height: 100%;
+    min-height: 220px;
+    background: linear-gradient(160deg, var(--navy) 0%, #2a5298 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .post-image-icon { font-size: 4.5rem; }
+
+  .post-body {
+    padding: 2rem 2rem 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .post-meta time { font-weight: 500; }
+
+  .post-author {
+    padding-left: 1rem;
+    border-left: 1px solid var(--border);
+  }
+
+  .post-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .post-title a {
+    color: var(--navy);
+    text-decoration: none;
+    transition: color .15s;
+  }
+
+  .post-title a:hover { color: var(--blue); }
+
+  .post-excerpt {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .post-readmore {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    transition: color .15s;
+    margin-top: .25rem;
+  }
+
+  .post-readmore:hover { color: var(--navy); }
+
+  /* CTA */
+  .cta-section { padding: 2rem 0 5rem; }
+
+  .cta-box {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a5298 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cta-box h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; color: #fff; }
+  .cta-box p { color: rgba(255,255,255,.8); font-size: 1rem; max-width: 480px; }
+
+  /* Responsive */
+  @media (max-width: 800px) {
+    .post-card {
+      grid-template-columns: 1fr;
+    }
+
+    .post-image-placeholder {
+      min-height: 180px;
+    }
+
+    .post-body {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .cta-box { padding: 2rem 1.5rem; }
+  }
+</style>
